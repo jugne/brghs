@@ -7,11 +7,11 @@
 
 /* ---------- THEME COLORS ---------- */
 :root {
-  --primary: #4b6584;
-  --secondary: #f7f1e3;
-  --accent: #f19066;
-  --dark: #2d3436;
-  --light: #ffffff;
+  --primary: #2f5233;    /* Deep forest green */
+  --secondary: #f4f9f4;  /* Light nature-inspired background */
+  --accent: #a3c293;     /* Muted green accent for buttons */
+  --dark: #264026;       /* Strong text on light bg */
+  --light: #ffffff;      /* Clean white for highlights */
 }
 
 /* ---------- GLOBAL STYLES ---------- */
