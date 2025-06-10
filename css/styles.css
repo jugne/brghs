@@ -1,50 +1,51 @@
+/* ---------- CSS RESET ---------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ---------- THEME COLORS ---------- */
+:root {
+  --primary: #4b6584;
+  --secondary: #f7f1e3;
+  --accent: #f19066;
+  --dark: #2d3436;
+  --light: #ffffff;
+}
+
+/* ---------- GLOBAL STYLES ---------- */
 body {
   font-family: "Segoe UI", sans-serif;
   line-height: 1.6;
-  color: #333;
-  background: #f4f4f4;
+  background: var(--secondary);
+  color: var(--dark);
 }
 
+h1, h2 {
+  color: var(--primary);
+}
+
+ul {
+  padding-left: 2rem;
+}
+
+section {
+  margin-bottom: 3rem;
+  padding: 1rem 0;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* ---------- HEADER & HERO ---------- */
 header {
   background: url('../images/gallery/1.jpg') no-repeat center center/cover;
   color: white;
   text-align: center;
   padding: 5rem 1rem;
   position: relative;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1rem 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-nav h1 {
-  font-size: 1.8rem;
-  color: #fff;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 .hero h2 {
@@ -56,14 +57,76 @@ nav a {
   font-size: 1.5rem;
 }
 
-main {
-  padding: 2rem;
+/* ---------- NAVIGATION ---------- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary);
+  color: var(--light);
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
 }
 
-section {
-  margin-bottom: 3rem;
+nav .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--light);
 }
 
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li {
+  padding: 0.5rem;
+}
+
+nav a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ---------- MOBILE MENU ---------- */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--light);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--primary);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: left;
+    padding-left: 1rem;
+  }
+}
+
+/* ---------- CAROUSEL ---------- */
 .carousel {
   position: relative;
   max-width: 600px;
@@ -99,14 +162,13 @@ section {
   right: 0;
 }
 
-ul {
-  padding-left: 2rem;
-}
-
+/* ---------- TABLE ---------- */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  background-color: var(--light);
+  border: 1px solid #ccc;
 }
 
 th, td {
@@ -115,33 +177,47 @@ th, td {
   text-align: center;
 }
 
+/* ---------- FORM ---------- */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background: var(--light);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 form label {
   display: flex;
   flex-direction: column;
+  font-weight: bold;
 }
 
-form input, form button {
+form input,
+form button {
   padding: 0.7rem;
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 form button {
-  background: #3e8e41;
+  background: var(--accent);
   color: white;
   border: none;
   cursor: pointer;
+  transition: background 0.3s ease;
 }
 
+form button:hover {
+  background: #e17055;
+}
+
+/* ---------- FOOTER ---------- */
 footer {
   text-align: center;
   padding: 2rem 1rem;
   background: #222;
   color: #eee;
 }
-

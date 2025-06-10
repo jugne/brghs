@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Mobile Menu Toggle
+  document.getElementById('menu-toggle').addEventListener('click', () => {
+    document.getElementById('nav-links').classList.toggle('show');
+  });
+
   let current = 0;
   const images = document.querySelectorAll('.carousel-image');
   const total = images.length;
