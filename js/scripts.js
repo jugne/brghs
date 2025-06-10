@@ -3,6 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('menu-toggle').addEventListener('click', () => {
     document.getElementById('nav-links').classList.toggle('show');
   });
+  
+  // Mobile-friendly activity tile toggle
+document.querySelectorAll('.activity-tile').forEach(tile => {
+  tile.addEventListener('click', function (e) {
+    // Only activate on touch devices
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      this.classList.toggle('toggled');
+    }
+  });
+});
 
   let current = 0;
   const images = document.querySelectorAll('.carousel-image');

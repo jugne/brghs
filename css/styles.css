@@ -90,6 +90,36 @@ nav a {
   font-weight: bold;
 }
 
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: var(--primary);
+  list-style: none;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  min-width: 150px;
+  border-radius: 4px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 0.5rem 1rem;
+}
+
+.dropdown-menu li a {
+  color: var(--light);
+  display: block;
+}
+
 /* ---------- MOBILE MENU ---------- */
 .menu-toggle {
   display: none;
@@ -161,6 +191,92 @@ nav a {
 #next {
   right: 0;
 }
+
+/* ---------- ACTIVITIES _____ */
+
+.activity-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.activity-tile {
+  position: relative;
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+}
+
+.activity-tile:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.tile-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  transition: background 0.3s ease;
+}
+
+.tile-content {
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tile-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+}
+
+.tile-desc {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.activity-tile:hover .tile-title {
+  display: none;
+}
+
+.activity-tile:hover .tile-desc {
+  opacity: 1;
+  max-height: 100px;
+}
+
+/* Ensure the toggle works on mobile */
+.activity-tile.toggled .tile-title {
+  display: none;
+}
+
+.activity-tile.toggled .tile-desc {
+  opacity: 1;
+  max-height: 100px;
+}
+
 
 /* ---------- TABLE ---------- */
 table {
