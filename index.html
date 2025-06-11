@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- fonts-->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Book your perfect mountain getaway at our cozy chalet!">
   <title>Mountain Chalet Booking</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header>
   <nav>
     <div class="logo">Mountain Escape</div>
     <div class="menu-toggle" id="menu-toggle">&#9776;</div>
@@ -17,89 +18,100 @@
       <li><a href="#gallery">Gallery</a></li>
       <li class="dropdown">
         <a href="#">Activities</a>
-    	<ul class="dropdown-menu">
-     	 <li><a href="#winter">Winter</a></li>
-     	 <li><a href="#summer">Summer</a></li>
-	 <li><a href="#workshops">Workshops</a></li>
+        <ul class="dropdown-menu">
+          <li><a href="#winter">Winter</a></li>
+          <li><a href="#summer">Summer</a></li>
+        </ul>
+      </li>
+      <li><a href="#workshops">Workshops</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#booking">Booking</a></li>
+      <li><button id="dark-mode-toggle" class="dark-mode-btn">🌙</button></li>
     </ul>
-  </li>
-  <li><a href="#pricing">Pricing</a></li>
-  <li><a href="#booking">Booking</a></li>
-</ul>
   </nav>
-    <section class="hero">
+
+  <section class="hero full">
+    <div class="hero-content">
       <h2>Escape to the Mountains</h2>
       <p>Cozy. Scenic. Unforgettable.</p>
-    </section>
-  </header>
+      <a href="#booking" class="btn-primary">Book Now</a>
+    </div>
+  </section>
 
   <main>
-    <section id="about">
+    <section id="about" class="card">
       <h2>About Us</h2>
-      <p>Welcome to our alpine chalet, nestled in the heart of the mountains. Ideal for families, couples, and retreats.</p>
+      <p>Welcome to our alpine chalet... ideal for families, couples, and retreats.</p>
     </section>
 
-    <section id="gallery">
-      <h2>Gallery</h2>
-      <div class="carousel">
-        <img src="images/gallery/1.jpg" alt="Chalet View 1" class="carousel-image active" />
-        <img src="images/gallery/2.jpg" alt="Chalet View 2" class="carousel-image" />
-        <img src="images/gallery/3.jpg" alt="Chalet View 3" class="carousel-image" />
-        <button id="prev">&#10094;</button>
-        <button id="next">&#10095;</button>
+<section id="gallery" class="card">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+    <div class="gallery-category" data-category="chalet">Chalet</div>
+    <div class="gallery-category" data-category="nature">Nature</div>
+  </div>
+
+  <!-- Modal for each category -->
+<div class="gallery-modal" id="gallery-modal">
+  <span class="close-modal">&times;</span>
+  <button class="modal-nav" id="modal-prev">&#10094;</button>
+  <img id="modal-image" src="" alt="Gallery Image" />
+  <div id="modal-caption" class="modal-caption"></div>
+  <button class="modal-nav" id="modal-next">&#10095;</button>
+</div>
+</section>
+
+
+    <section id="winter" class="card">
+      <h2>Winter Activities</h2>
+      <div class="activity-cards">
+        <a href="#" class="activity-tile" style="background-image: url('images/winter/skiing.jpg');">
+          <div class="tile-overlay">
+            <div class="tile-content">
+              <span class="tile-title">Skiing</span>
+              <p class="tile-desc">Exciting downhill skiing with guided instructors.</p>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="activity-tile" style="background-image: url('images/winter/snowshoe.jpg');">
+          <div class="tile-overlay">
+            <div class="tile-content">
+              <span class="tile-title">Snowshoeing</span>
+              <p class="tile-desc">Peaceful hikes through snowy forests.</p>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
 
-<section id="winter">
-  <h2>Winter Activities</h2>
-  <div class="activity-cards">
-    <a href="#" class="activity-tile" style="background-image: url('images/winter/skiing.jpg');">
-  <div class="tile-overlay">
-    <div class="tile-content">
-      <span class="tile-title">Skiing</span>
-      <p class="tile-desc">Experience thrilling slopes for all levels with ski rental and guided tours.</p>
-    </div>
-  </div>
-</a>
-    <a href="#" class="activity-tile" style="background-image: url('images/winter/skiing.jpg');">
-  <div class="tile-overlay">
-    <div class="tile-content">
-      <span class="tile-title">Skiing</span>
-      <p class="tile-desc">Experience thrilling slopes for all levels with ski rental and guided tours.</p>
-    </div>
-  </div>
-</a>
-  </div>
-</section>
-
-<section id="summer">
-  <h2>Summer Activities</h2>
-  <div class="activity-cards">
-    <a href="#" class="activity-tile" style="background-image: url('images/winter/skiing.jpg');">
-  <div class="tile-overlay">
-    <div class="tile-content">
-      <span class="tile-title">Skiing</span>
-      <p class="tile-desc">Experience thrilling slopes for all levels with ski rental and guided tours.</p>
-    </div>
-  </div>
-</a>
-    <a href="#" class="activity-tile" style="background-image: url('images/winter/skiing.jpg');">
-  <div class="tile-overlay">
-    <div class="tile-content">
-      <span class="tile-title">Skiing</span>
-      <p class="tile-desc">Experience thrilling slopes for all levels with ski rental and guided tours.</p>
-    </div>
-  </div>
-</a>
-  </div>
-</section>
-
-    <section id="workshops">
-      <h2>Workshops</h2>
-      <p>Join our seasonal wellness workshops and local crafts sessions, guided by professionals.</p>
+    <section id="summer" class="card">
+      <h2>Summer Activities</h2>
+      <div class="activity-cards">
+        <a href="#" class="activity-tile" style="background-image: url('images/summer/hiking.jpg');">
+          <div class="tile-overlay">
+            <div class="tile-content">
+              <span class="tile-title">Hiking</span>
+              <p class="tile-desc">Scenic mountain trails and refreshing views.</p>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="activity-tile" style="background-image: url('images/summer/yoga.jpg');">
+          <div class="tile-overlay">
+            <div class="tile-content">
+              <span class="tile-title">Outdoor Yoga</span>
+              <p class="tile-desc">Morning mountain yoga sessions.</p>
+            </div>
+          </div>
+        </a>
+      </div>
     </section>
 
-    <section id="pricing">
+    <section id="workshops" class="card">
+      <h2>Workshops</h2>
+      <p>Seasonal wellness workshops and local crafts sessions led by professionals.</p>
+    </section>
+
+    <section id="pricing" class="card">
       <h2>Pricing</h2>
       <table>
         <thead>
@@ -113,19 +125,38 @@
       </table>
     </section>
 
-    <section id="booking">
-      <h2>Book Your Stay</h2>
-      <form id="booking-form">
-        <label>Name: <input type="text" name="name" required /></label>
-        <label>Email: <input type="email" name="email" required /></label>
-        <label>Check-in: <input type="date" name="checkin" required /></label>
-        <label>Check-out: <input type="date" name="checkout" required /></label>
-        <label>Guests: <input type="number" name="guests" min="1" required /></label>
-        <button type="submit">Submit Booking</button>
-      </form>
-    </section>
+<section id="booking" class="card">
+  <h2>Book Your Stay</h2>
+
+  <div class="booking-container">
+    <div class="booking-options">
+      <div class="option-box">
+        <h3>Email Us</h3>
+        <p>Reach out directly to make a reservation or ask questions:</p>
+        <span id="email-link-container"></span>
+      </div>
+
+      <div class="option-box">
+        <h3>Book on Airbnb</h3>
+        <p>View real-time availability and secure your stay:</p>
+        <a href="https://www.airbnb.com/your-listing-link" class="btn-primary" target="_blank">Go to Airbnb</a>
+      </div>
+    </div>
+    
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d329.68724463545806!2d7.283722125347452!3d46.59571190170516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sch!4v1749584670522!5m2!1sen!2sch"
+        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+
   </main>
 
+  <a href="#booking" class="floating-button">Contact Us</a>
   <footer>
     <p>&copy; 2025 Mountain Escape Chalet</p>
   </footer>
@@ -133,4 +164,3 @@
   <script src="js/scripts.js"></script>
 </body>
 </html>
-
