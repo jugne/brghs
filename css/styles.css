@@ -158,8 +158,13 @@ nav.scrolled{box-shadow:0 4px 8px var(--shadow);transform:translateY(-2px)}
 .activity-tile.toggled .tile-desc{opacity:1;max-height:100px}
 
 /* TABLE */
-table{width:100%;border-collapse:collapse;background:var(--light);border:1px solid #ddd}
-th,td{padding:0.8rem;border:1px solid #ddd;text-align:center}
+table{width: max-content;border-collapse:collapse;background:var(--light);border:1px solid #ddd;margin: 0 auto;margin-bottom: 1.5rem;}
+th,td{padding:0.8rem;border:1px solid #ddd;text-align:center;}
+
+td:first-child {
+  align-items: center;
+  text-align: left;
+}
 
 /* FORM */
 .option-box a.btn-primary {
