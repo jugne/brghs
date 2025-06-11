@@ -1,140 +1,84 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // === Mobile Menu ===
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-  menuToggle.addEventListener('click', () => navLinks.classList.toggle('show'));
-
-  // === Navbar Scroll Shadow ===
-  window.addEventListener('scroll', () => {
-    document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 10);
+// Robust Modular JavaScript (ES6+)
+document.addEventListener("DOMContentLoaded", () => {
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+  menuToggle?.addEventListener("click", () => {
+    navLinks?.classList.toggle("show");
   });
 
-  // === Mobile Tap Toggle for Activity Cards ===
-  document.querySelectorAll('.activity-tile').forEach(tile => {
-    tile.addEventListener('click', e => {
-      if (window.innerWidth <= 768) {
-        e.preventDefault();
-        tile.classList.toggle('toggled');
+  // Dark Mode Toggle
+  const darkToggle = document.getElementById("dark-mode-toggle");
+  darkToggle?.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+
+  // Scroll-triggered Nav Styling
+  const nav = document.querySelector("nav");
+  const hero = document.querySelector(".hero");
+  if (nav && hero) {
+    const navObserver = new IntersectionObserver(
+      ([entry]) => {
+        nav.classList.toggle("scrolled", !entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    navObserver.observe(hero);
+  }
+
+  // Collapsible Sections
+  document.querySelectorAll(".toggle-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (target) {
+        target.classList.toggle("collapsed");
       }
     });
   });
 
-  // === Carousel (Main Gallery) ===
-  let current = 0;
-  const imgs = document.querySelectorAll('.carousel-image');
-  if (imgs.length) {
-    document.getElementById('next').addEventListener('click', () => {
-      imgs[current].classList.remove('active');
-      current = (current + 1) % imgs.length;
-      imgs[current].classList.add('active');
-    });
+  // Gallery Modal
+  const galleryModal = document.getElementById("gallery-modal");
+  const modalImage = document.getElementById("modal-image");
+  const modalCaption = document.getElementById("modal-caption");
+  let currentGallery = [];
+  let currentIndex = 0;
 
-    document.getElementById('prev').addEventListener('click', () => {
-      imgs[current].classList.remove('active');
-      current = (current - 1 + imgs.length) % imgs.length;
-      imgs[current].classList.add('active');
-    });
-  }
-
-  // === Form Submit ===
-  const form = document.getElementById('booking-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert("Thanks for booking! We'll get back to you.");
-      e.target.reset();
-    });
-  }
-
-  // === Dark Mode Toggle ===
-  const darkBtn = document.getElementById('dark-mode-toggle');
-  if (darkBtn) {
-    darkBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      darkBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    });
-  }
-
-  // === Gallery Modal ===
-  const galleryImages = {
-  chalet: [
-    { src: 'images/gallery/chalet1.jpg', caption: 'Our snowy chalet during golden hour' },
-    { src: 'images/gallery/chalet2.jpg', caption: 'View from the balcony on a clear day' }
-  ],
-  nature: [
-    { src: 'images/gallery/chalet1.jpg', caption: 'Morning mist over the trees' },
-    { src: 'images/gallery/chalet2.jpg', caption: '' } // no caption shown
-  ]
+  const openModal = (images, index = 0) => {
+    if (!galleryModal || !modalImage || !modalCaption) return;
+    currentGallery = images;
+    currentIndex = index;
+    modalImage.src = images[index].src;
+    modalImage.alt = images[index].alt || "Gallery image";
+    modalCaption.textContent = images[index].caption || "";
+    galleryModal.style.display = "flex";
   };
 
-  let modal = document.getElementById('gallery-modal');
-  let modalImage = document.getElementById('modal-image');
-  let currentIndex = 0;
-  let currentCategory = '';
+  const closeModal = () => {
+    if (galleryModal) galleryModal.style.display = "none";
+  };
 
-function showModalImage() {
-  const imageObj = galleryImages[currentCategory][currentIndex];
-  modalImage.src = imageObj.src;
-  document.getElementById('modal-caption').textContent = imageObj.caption || '';
-}
+  const showImage = index => {
+    if (!modalImage || !modalCaption || currentGallery.length === 0) return;
+    currentIndex = (index + currentGallery.length) % currentGallery.length;
+    modalImage.src = currentGallery[currentIndex].src;
+    modalCaption.textContent = currentGallery[currentIndex].caption || "";
+  };
 
+  document.querySelector(".close-modal")?.addEventListener("click", closeModal);
+  document.getElementById("modal-prev")?.addEventListener("click", () => showImage(currentIndex - 1));
+  document.getElementById("modal-next")?.addEventListener("click", () => showImage(currentIndex + 1));
 
-  function closeModal() {
-    modal.style.display = 'none';
-  }
-
-  document.querySelectorAll('.gallery-category').forEach(cat => {
-    cat.addEventListener('click', () => {
-      currentCategory = cat.dataset.category;
-      currentIndex = 0;
-      showModalImage();
-      modal.style.display = 'flex';
+  // Working Gallery Trigger
+  document.querySelectorAll(".gallery-category").forEach((cat, i) => {
+    cat.addEventListener("click", () => {
+      const category = cat.dataset.category;
+      // Hardcoded demo, replace with real images per category
+      const images = [
+        { src: `images/${category}/1.jpg`, caption: `${category} photo 1` },
+        { src: `images/${category}/2.jpg`, caption: `${category} photo 2` },
+        { src: `images/${category}/3.jpg`, caption: `${category} photo 3` },
+      ];
+      openModal(images, 0);
     });
   });
-
-  document.getElementById('modal-next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % galleryImages[currentCategory].length;
-    showModalImage();
-  });
-
-  document.getElementById('modal-prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + galleryImages[currentCategory].length) % galleryImages[currentCategory].length;
-    showModalImage();
-  });
-
-  document.querySelector('.close-modal').addEventListener('click', closeModal);
-
-  window.addEventListener('keydown', (e) => {
-    if (modal.style.display === 'flex') {
-      if (e.key === 'ArrowRight') document.getElementById('modal-next').click();
-      if (e.key === 'ArrowLeft') document.getElementById('modal-prev').click();
-      if (e.key === 'Escape') closeModal();
-    }
-  });
-  
-  // Email Obfuscation
-const emailContainer = document.getElementById('email-link-container');
-if (emailContainer) {
-  const user = 'stay';
-  const domain = 'mountainescape.com';
-  const fullEmail = `${user}@${domain}`;
-  const link = document.createElement('a');
-  link.href = `mailto:${fullEmail}`;
-  link.textContent = 'Send Email';
-  link.className = 'btn-primary';
-  emailContainer.appendChild(link);
-}
-
-// Toggle for collapsible activities
-document.querySelectorAll('.toggle-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const targetId = btn.dataset.target;
-    const section = document.getElementById(targetId);
-    section.classList.toggle('collapsed');
-    const isOpen = !section.classList.contains('collapsed');
-    btn.textContent = `${targetId.charAt(0).toUpperCase() + targetId.slice(1)} ${isOpen ? '▾' : '▸'}`;
-  });
-});
-
-
 });
