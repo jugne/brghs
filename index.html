@@ -16,14 +16,15 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="#about">About Us</a></li>
       <li><a href="#gallery">Gallery</a></li>
-      <li class="dropdown">
-        <a href="#">Activities</a>
-        <ul class="dropdown-menu">
-          <li><a href="#winter">Winter</a></li>
-          <li><a href="#summer">Summer</a></li>
-        </ul>
-      </li>
-      <li><a href="#workshops">Workshops</a></li>
+	<li class="dropdown">
+  		<a href="#activities">Activities</a>
+ 		 <ul class="dropdown-menu">
+    			<li><a href="#winter">Winter</a></li>
+    			<li><a href="#summer">Summer</a></li>
+			<li><a href="#events">Events</a></li>
+  		</ul>
+	</li>
+      <li><a href="#facilities">Facilities</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#booking">Booking</a></li>
       <li><button id="dark-mode-toggle" class="dark-mode-btn">🌙</button></li>
@@ -62,8 +63,12 @@
 </section>
 
 
-    <section id="winter" class="card">
-      <h2>Winter Activities</h2>
+<section id="activities" class="card">
+  <h2>Activities</h2>
+
+<div class="collapsible-section">
+    <button class="toggle-btn" data-target="winter">Winter ▾</button>
+    <section id="winter" class="collapsible">
       <div class="activity-cards">
         <a href="#" class="activity-tile" style="background-image: url('images/winter/skiing.jpg');">
           <div class="tile-overlay">
@@ -84,8 +89,10 @@
       </div>
     </section>
 
-    <section id="summer" class="card">
-      <h2>Summer Activities</h2>
+
+   <div class="collapsible-section">
+    <button class="toggle-btn" data-target="summer">Summer ▾</button>
+    <section id="summer" class="collapsible">
       <div class="activity-cards">
         <a href="#" class="activity-tile" style="background-image: url('images/summer/hiking.jpg');">
           <div class="tile-overlay">
@@ -105,9 +112,33 @@
         </a>
       </div>
     </section>
+    
+    <div class="collapsible-section">
+    <button class="toggle-btn" data-target="events">Events ▾</button>
+    <section id="events" class="collapsible">
+      <div class="activity-cards">
+        <a href="#" class="activity-tile" style="background-image: url('images/summer/hiking.jpg');">
+          <div class="tile-overlay">
+            <div class="tile-content">
+              <span class="tile-title">Workshops</span>
+              <p class="tile-desc">Scenic mountain trails and refreshing views.</p>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="activity-tile" style="background-image: url('images/summer/yoga.jpg');">
+          <div class="tile-overlay">
+            <div class="tile-content">
+              <span class="tile-title">Birthdays</span>
+              <p class="tile-desc">Morning mountain yoga sessions.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+     </section>
 
-    <section id="workshops" class="card">
-      <h2>Workshops</h2>
+    <section id="facilities" class="card">
+      <h2>Facilities</h2>
       <p>Seasonal wellness workshops and local crafts sessions led by professionals.</p>
     </section>
 
@@ -115,14 +146,18 @@
       <h2>Pricing</h2>
       <table>
         <thead>
-          <tr><th>Season</th><th>Price/Night</th><th>Includes</th></tr>
+          <tr><th>Rate</th><th>Price/Night</th></tr>
         </thead>
         <tbody>
-          <tr><td>Winter</td><td>$250</td><td>Breakfast, Ski Pass</td></tr>
-          <tr><td>Summer</td><td>$180</td><td>Yoga Class, Breakfast</td></tr>
-          <tr><td>All Year</td><td>$300</td><td>All Inclusive</td></tr>
+          <tr><td>Base rate (1-2 guests)</td><td>750 CHF</td></tr>
+          <tr><td>Per person surcharge (from 3rd guest)</td><td>30 CHF</td></tr>
+          <tr><td>Pet surcharge (total)*</td><td>34 CHF</td></tr>
         </tbody>
       </table>
+      <p>
+      Maximum number of guests sleeping inside the chalet: 10. Children under 2 stay for free. 
+      </p>
+      <p>* Let us know if you are bringing more than 2 pets.</p>
     </section>
 
 <section id="booking" class="card">
@@ -139,7 +174,7 @@
       <div class="option-box">
         <h3>Book on Airbnb</h3>
         <p>View real-time availability and secure your stay:</p>
-        <a href="https://www.airbnb.com/your-listing-link" class="btn-primary" target="_blank">Go to Airbnb</a>
+        <a href="https://www.airbnb.com/rooms/1281042066773625987?check_in=2025-06-15&check_out=2025-06-21&guests=1&adults=1&s=67&unique_share_id=c1413cb7-61c7-4af3-8c93-ead8817e9a4e" class="btn-primary" target="_blank">Go to Airbnb</a>
       </div>
     </div>
     

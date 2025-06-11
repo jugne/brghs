@@ -256,7 +256,50 @@ section.card:not(:last-child) {
   }
 }
 
+#activities h3 {
+  margin-top: 2rem;
+  color: var(--primary);
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.5rem;
+}
 
+
+.toggle-btn {
+  display: inline-block;
+  background: none;
+  color: var(--primary);
+  font-weight: bold;
+  border: none;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.collapsible {
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.collapsible.collapsed {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  #winter.collapsible,
+  #summer.collapsible,
+  #events.collapsible, {
+    max-height: 0;
+  }
+
+  #winter.collapsible:not(.collapsed),
+  #summer.collapsible:not(.collapsed),
+  #events.collapsible:not(.collapsed) {
+    max-height: 1000px;
+  }
+}
 
 
 

@@ -125,4 +125,16 @@ if (emailContainer) {
   emailContainer.appendChild(link);
 }
 
+// Toggle for collapsible activities
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetId = btn.dataset.target;
+    const section = document.getElementById(targetId);
+    section.classList.toggle('collapsed');
+    const isOpen = !section.classList.contains('collapsed');
+    btn.textContent = `${targetId.charAt(0).toUpperCase() + targetId.slice(1)} ${isOpen ? '▾' : '▸'}`;
+  });
+});
+
+
 });
