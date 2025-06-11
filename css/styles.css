@@ -145,7 +145,9 @@ nav.scrolled{box-shadow:0 4px 8px var(--shadow);transform:translateY(-2px)}
 
 /* ACTIVITIES */
 .activity-cards{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:1rem}
-.activity-tile{position:relative;height:220px;background-size:cover;background-position:center;border-radius:10px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;color:#fff;text-decoration:none}
+.activity-tile{position:relative;height:220px;background-size:cover;background-position:center;border-radius:10px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;color:#fff;text-decoration:none;
+  cursor: default;
+}
 .activity-tile:hover{transform:scale(1.02);box-shadow:0 8px 20px var(--shadow)}
 .tile-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent 70%);display:flex;justify-content:center;align-items:center;padding:1rem;transition:background 0.3s}
 .tile-title{font-size:1.5rem;font-weight:bold;background:rgba(0,0,0,0.5);padding:0.4rem 1rem;border-radius:5px}
