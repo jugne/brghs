@@ -29,49 +29,7 @@ navLinks.querySelectorAll('a').forEach(link => {
       }
     });
   });
-  
-  document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.getElementById('nav-links');
-  const toggleBtn = document.getElementById('menu-toggle');
 
-  toggleBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-  });
-
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('show');
-    });
-  });
-});
-
-
-  // === Carousel (Main Gallery) ===
-  let current = 0;
-  const imgs = document.querySelectorAll('.carousel-image');
-  if (imgs.length) {
-    document.getElementById('next').addEventListener('click', () => {
-      imgs[current].classList.remove('active');
-      current = (current + 1) % imgs.length;
-      imgs[current].classList.add('active');
-    });
-
-    document.getElementById('prev').addEventListener('click', () => {
-      imgs[current].classList.remove('active');
-      current = (current - 1 + imgs.length) % imgs.length;
-      imgs[current].classList.add('active');
-    });
-  }
-
-  // === Form Submit ===
-  const form = document.getElementById('booking-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert("Thanks for booking! We'll get back to you.");
-      e.target.reset();
-    });
-  }
 
   // === Dark Mode Toggle ===
   const darkBtn = document.getElementById('dark-mode-toggle');
@@ -84,44 +42,54 @@ navLinks.querySelectorAll('a').forEach(link => {
 
   // === Gallery Modal ===
   
-// IMAGES DATA STRUCTURE
-const galleryImages = {
+  const galleryImages = {
   'chalet-rooms': [
-    'images/chalet/rooms1.jpg',
-    'images/chalet/rooms2.jpg'
+    { src: 'images/chalet/rooms/bd1.jpeg', caption: 'Bedroom 1: Queen bed, bed linens, iron, hangers and clothing storage.' },
+    { src: 'images/chalet/rooms/bd2_1.jpeg', caption: 'Bedroom 2: Small table, DvDs and CDs for entertainment.' },
+    { src: 'images/chalet/rooms/bd2_2.jpeg', caption: 'Bedroom 2: 3 single camping beds with self-inflatable mattresses. Bring your own sleeping bags!' },
+    { src: 'images/chalet/rooms/bd2_3.jpeg', caption: 'Bedroom 2: 3 single camping beds with self-inflatable mattresses. Bring your own sleeping bags!' },
+    { src: 'images/chalet/rooms/bd3_1.jpeg', caption: 'Bedroom 3: Use this room as living room or bedroom (5 people).' },
+    { src: 'images/chalet/rooms/bd3_2.jpeg', caption: 'Bedroom 3: Attic view from the entrance to the second floor.' },
+    { src: 'images/chalet/rooms/bd3_4.jpeg', caption: 'Bedroom 3: 5 people can sleep on very comfortable self-inflatable mattresses. Camp beds also available. Bring your own sleeping bags!'},
+    { src: 'images/chalet/rooms/bd3_3.jpeg', caption: 'Bedroom 3: Indoor swing for young and old (swing available).'}
+  ],
+  'chalet-dining': [
+    { src: 'images/chalet/dining/dine1.jpeg', caption: 'Rustic dining table' }
   ],
   'chalet-kitchen': [
-    'images/chalet/kitchen1.jpg'
+    { src: 'images/chalet/kitchen/kitchen1.jpeg', caption: 'Modern kitchen' }
   ],
   'chalet-bathrooms': [
-    'images/chalet/bathrooms1.jpg'
+    { src: 'images/chalet/bathroom/bath1.jpeg', caption: 'Spa-style bathroom' }
   ],
   'chalet-garden': [
-    'images/chalet/garden1.jpg'
+    { src: 'images/chalet/outside/outside1.jpeg', caption: 'Mountain view garden' }
   ],
+  'chalet-all': [],
   'nature': [
-    'images/nature1.jpg',
-    'images/nature2.jpg'
+    { src: 'images/nature1.jpg', caption: 'Valley panorama' },
+    { src: 'images/nature2.jpg', caption: 'Alpine trail' }
   ]
 };
 
-// MODAL FUNCTIONALITY
+galleryImages['chalet-all'] = [
+  ...galleryImages['chalet-rooms'],
+  ...galleryImages['chalet-dining'],
+  ...galleryImages['chalet-kitchen'],
+  ...galleryImages['chalet-bathrooms'],
+  ...galleryImages['chalet-garden']
+];
+
+  
+// — IMAGE DATA FOR GALLERY
+
 let currentGallery = [];
 let currentIndex = 0;
 
+// ✅ Modal Controls
 function openGallery(key) {
-  if (key === 'chalet') {
-    currentGallery = [
-      ...galleryImages['chalet-rooms'],
-      ...galleryImages['chalet-kitchen'],
-      ...galleryImages['chalet-bathrooms'],
-      ...galleryImages['chalet-garden']
-    ];
-  } else {
-    currentGallery = galleryImages[key] || [];
-  }
-
-  if (currentGallery.length > 0) {
+  currentGallery = galleryImages[key] || [];
+  if (currentGallery.length) {
     currentIndex = 0;
     showModalImage(currentIndex);
     document.getElementById('gallery-modal').style.display = 'flex';
@@ -131,8 +99,9 @@ function openGallery(key) {
 function showModalImage(index) {
   const modalImg = document.getElementById('modal-image');
   const caption = document.getElementById('modal-caption');
-  modalImg.src = currentGallery[index];
-  caption.textContent = `Image ${index + 1} of ${currentGallery.length}`;
+  const { src, caption: text } = currentGallery[index];
+  modalImg.src = src;
+  caption.textContent = text || `Image ${index + 1} of ${currentGallery.length}`;
 }
 
 document.getElementById('modal-next').onclick = () => {
@@ -149,22 +118,27 @@ document.querySelector('.close-modal').onclick = () => {
   document.getElementById('gallery-modal').style.display = 'none';
 };
 
-// GALLERY EVENT LISTENERS
-document.querySelectorAll('.gallery-category').forEach(el => {
-  el.addEventListener('click', () => {
-    const cat = el.getAttribute('data-category');
-    openGallery(cat);
+// ✅ Event Listeners
+
+// Tab buttons
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cat = btn.getAttribute('data-category');
+    document.getElementById('chalet-subtabs').style.display = (cat === 'chalet') ? 'flex' : 'none';
+    openGallery(`${cat}-all`);
   });
 });
 
-document.querySelectorAll('.gallery-subcategory').forEach(el => {
-  el.addEventListener('click', (e) => {
-    e.stopPropagation(); // prevent triggering parent click
-    const sub = el.getAttribute('data-subcategory');
-    openGallery(`chalet-${sub}`);
+// Subtab buttons
+document.querySelectorAll('.subtab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sub = btn.getAttribute('data-subcategory');
+    openGallery(sub);
   });
 });
-
   
   // Email Obfuscation
 const emailContainer = document.getElementById('email-link-container');
