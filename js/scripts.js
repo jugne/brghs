@@ -1,8 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   // === Mobile Menu ===
   const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-  menuToggle.addEventListener('click', () => navLinks.classList.toggle('show'));
+  
+    const navLinks = document.getElementById('nav-links');
+const toggleBtn = document.getElementById('menu-toggle');
+
+toggleBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('show');
+  });
+});
 
   // === Navbar Scroll Shadow ===
   window.addEventListener('scroll', () => {
@@ -18,6 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+  
+  document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.getElementById('nav-links');
+  const toggleBtn = document.getElementById('menu-toggle');
+
+  toggleBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('show');
+    });
+  });
+});
+
 
   // === Carousel (Main Gallery) ===
   let current = 0;
@@ -56,63 +83,88 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // === Gallery Modal ===
-  const galleryImages = {
-  chalet: [
-    { src: 'images/gallery/chalet1.jpg', caption: 'Our snowy chalet during golden hour' },
-    { src: 'images/gallery/chalet2.jpg', caption: 'View from the balcony on a clear day' }
+  
+// IMAGES DATA STRUCTURE
+const galleryImages = {
+  'chalet-rooms': [
+    'images/chalet/rooms1.jpg',
+    'images/chalet/rooms2.jpg'
   ],
-  nature: [
-    { src: 'images/gallery/chalet1.jpg', caption: 'Morning mist over the trees' },
-    { src: 'images/gallery/chalet2.jpg', caption: '' } // no caption shown
+  'chalet-kitchen': [
+    'images/chalet/kitchen1.jpg'
+  ],
+  'chalet-bathrooms': [
+    'images/chalet/bathrooms1.jpg'
+  ],
+  'chalet-garden': [
+    'images/chalet/garden1.jpg'
+  ],
+  'nature': [
+    'images/nature1.jpg',
+    'images/nature2.jpg'
   ]
-  };
-  
-  
+};
 
-  let modal = document.getElementById('gallery-modal');
-  let modalImage = document.getElementById('modal-image');
-  let currentIndex = 0;
-  let currentCategory = '';
+// MODAL FUNCTIONALITY
+let currentGallery = [];
+let currentIndex = 0;
 
-function showModalImage() {
-  const imageObj = galleryImages[currentCategory][currentIndex];
-  modalImage.src = imageObj.src;
-  document.getElementById('modal-caption').textContent = imageObj.caption || '';
-}
-
-
-  function closeModal() {
-    modal.style.display = 'none';
+function openGallery(key) {
+  if (key === 'chalet') {
+    currentGallery = [
+      ...galleryImages['chalet-rooms'],
+      ...galleryImages['chalet-kitchen'],
+      ...galleryImages['chalet-bathrooms'],
+      ...galleryImages['chalet-garden']
+    ];
+  } else {
+    currentGallery = galleryImages[key] || [];
   }
 
-  document.querySelectorAll('.gallery-category').forEach(cat => {
-    cat.addEventListener('click', () => {
-      currentCategory = cat.dataset.category;
-      currentIndex = 0;
-      showModalImage();
-      modal.style.display = 'flex';
-    });
-  });
+  if (currentGallery.length > 0) {
+    currentIndex = 0;
+    showModalImage(currentIndex);
+    document.getElementById('gallery-modal').style.display = 'flex';
+  }
+}
 
-  document.getElementById('modal-next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % galleryImages[currentCategory].length;
-    showModalImage();
-  });
+function showModalImage(index) {
+  const modalImg = document.getElementById('modal-image');
+  const caption = document.getElementById('modal-caption');
+  modalImg.src = currentGallery[index];
+  caption.textContent = `Image ${index + 1} of ${currentGallery.length}`;
+}
 
-  document.getElementById('modal-prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + galleryImages[currentCategory].length) % galleryImages[currentCategory].length;
-    showModalImage();
-  });
+document.getElementById('modal-next').onclick = () => {
+  currentIndex = (currentIndex + 1) % currentGallery.length;
+  showModalImage(currentIndex);
+};
 
-  document.querySelector('.close-modal').addEventListener('click', closeModal);
+document.getElementById('modal-prev').onclick = () => {
+  currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+  showModalImage(currentIndex);
+};
 
-  window.addEventListener('keydown', (e) => {
-    if (modal.style.display === 'flex') {
-      if (e.key === 'ArrowRight') document.getElementById('modal-next').click();
-      if (e.key === 'ArrowLeft') document.getElementById('modal-prev').click();
-      if (e.key === 'Escape') closeModal();
-    }
+document.querySelector('.close-modal').onclick = () => {
+  document.getElementById('gallery-modal').style.display = 'none';
+};
+
+// GALLERY EVENT LISTENERS
+document.querySelectorAll('.gallery-category').forEach(el => {
+  el.addEventListener('click', () => {
+    const cat = el.getAttribute('data-category');
+    openGallery(cat);
   });
+});
+
+document.querySelectorAll('.gallery-subcategory').forEach(el => {
+  el.addEventListener('click', (e) => {
+    e.stopPropagation(); // prevent triggering parent click
+    const sub = el.getAttribute('data-subcategory');
+    openGallery(`chalet-${sub}`);
+  });
+});
+
   
   // Email Obfuscation
 const emailContainer = document.getElementById('email-link-container');
@@ -139,4 +191,10 @@ document.querySelectorAll('.toggle-btn').forEach(btn => {
 });
 
 
+
+
+
+
 });
+
+

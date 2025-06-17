@@ -47,10 +47,18 @@
 
     <section id="gallery" class="card" aria-labelledby="gallery">
       <h2>Gallery</h2>
-      <div class="gallery-grid">
-        <div class="gallery-category" data-category="chalet">Chalet</div>
-        <div class="gallery-category" data-category="nature">Nature</div>
-      </div>
+<div class="gallery-grid">
+  <div class="gallery-category parent" data-category="chalet">Chalet
+    <div class="subcategories">
+      <div class="gallery-subcategory" data-subcategory="rooms">Rooms</div>
+      <div class="gallery-subcategory" data-subcategory="rooms">Dining</div>
+      <div class="gallery-subcategory" data-subcategory="kitchen">Kitchen</div>
+      <div class="gallery-subcategory" data-subcategory="bathrooms">Bathrooms</div>
+      <div class="gallery-subcategory" data-subcategory="garden">Ouside</div>
+    </div>
+  </div>
+  <div class="gallery-category" data-category="nature">Nature</div>
+</div>
 
       <div class="gallery-modal" id="gallery-modal" role="dialog" aria-modal="true">
         <span class="close-modal" role="button" tabindex="0">&times;</span>
