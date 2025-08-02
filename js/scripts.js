@@ -29,16 +29,6 @@ navLinks.querySelectorAll('a').forEach(link => {
       }
     });
   });
-
-
-  // === Dark Mode Toggle ===
-  const darkBtn = document.getElementById('dark-mode-toggle');
-  if (darkBtn) {
-    darkBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      darkBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-    });
-  }
   
 /* ===== Gallery Tabs/Subtabs ===== */
   const tabButtons = document.querySelectorAll('.tab-btn');

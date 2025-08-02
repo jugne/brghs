@@ -33,8 +33,6 @@ nav.scrolled{box-shadow:0 4px 8px var(--shadow);transform:translateY(-2px)}
 .nav-links a{color:var(--light);text-decoration:none;font-weight:bold}
 .menu-toggle{display:none;font-size:2rem;cursor:pointer}
 
-/* Dark Mode Toggle */
-.dark-mode-btn{background:none;border:none;color:var(--light);font-size:1.5rem;cursor:pointer}
 
 /* Dropdown */
 .dropdown{position:relative}
@@ -325,21 +323,6 @@ footer{text-align:center;padding:1.5rem;background:var(--primary);color:var(--li
 /* FLOATING CONTACT BUTTON */
 .floating-button{position:fixed;bottom:20px;right:20px;background:var(--accent);color:#fff;padding:0.8rem 1.2rem;border-radius:50px;box-shadow:0 4px 12px var(--shadow);text-decoration:none;font-weight:bold;transition:transform 0.3s}
 .floating-button:hover{transform:scale(1.05)}
-
-/* DARK MODE */
-
-body.dark-mode {
-  --primary: #1e2f23;
-  --secondary: #121915;
-  --accent: #6b8e23;
-  --dark: #f1f8ee;
-}
-body.dark-mode nav.scrolled {
-  background-color: rgba(30, 47, 35, 0.95) !important;
-}
-body.dark-mode footer {
-  background: #1e2f23;
-}
 
 /* leave room for the fixed nav on every hash-link jump */
 html{
