@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mountain Chalet Booking</title>
+  <title>Bärghus Musersbergli</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -13,11 +13,27 @@
       <div class="logo">BÄRGHUS MUSERSBERGLI</div>
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">&#9776;</button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#facilities">Facilities</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#booking">Booking</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+        <li class="dropdown">
+          <a href="#" data-i18n="nav.guesthaus">Guesthaus</a>
+          <ul class="dropdown-menu">
+            <li><a href="#facilities" data-i18n="nav.facilities">Facilities</a></li>
+            <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+            <li><a href="#booking" data-i18n="nav.booking">Booking</a></li>
+          </ul>
+        </li>
+        <li><a href="#weather" data-i18n="nav.weather">Weather</a></li>
+        <li><a href="#directions" data-i18n="nav.directions">Getting There</a></li>
+        <li>
+        <li class="dropdown">
+          <a href="#" data-i18n="nav.language">Language</a>
+          <ul class="dropdown-menu">
+            <li><a href="#" data-lang="en">EN</a></li>
+            <li><a href="#" data-lang="de">DE</a></li>
+            <li><a href="#" data-lang="fr">FR</a></li>
+          </ul>
+        </li>
         <li><button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Toggle dark mode">🌙</button></li>
       </ul>
     </nav>
@@ -27,33 +43,81 @@
     <div class="hero-content">
       <h1>Bärghus Musersbergli</h1>
       <p>Escape to the Mountains</p>
-      <a href="#booking" class="btn-primary">Book Now</a>
+      <p><strong style="color: red;" data-i18n="text.open">RESTAURANT OPEN:</strong><span data-i18n="text.openTime"> July 26th - August 11th!</span></p>
+      <a href="#booking" class="btn-primary" data-i18n="buttons.bookNow">Book Now</a>
     </div>
   </section>
 
   <main>
     <section id="about" class="card" aria-labelledby="about">
-      <h2>About Us</h2>
-      <p>Welcome to our alpine chalet... ideal for families, couples, and retreats.</p>
+      <h2 data-i18n="section.about.title1">Bärghus Musersbergli</h2>
+      <p>
+        <span data-i18n="section.about.text1">Bärghus Musersbergli is a traditional alpine guesthouse situated at 1600 m altitude. Nestled in the typical alpine landscape, you can enjoy the beautiful nature of the Swiss Pre-Alps here. The Bärghus sits right beside the</span>
+        <a href="https://www.jaun-bergbahnen.ch" data-i18n="links.chairlift"> Gastlosen-Express chairlift</a>
+        <span data-i18n="section.about.text2">, which marks the start of the scenic alpine hiking trail </span>
+        <a href="https://www.myswitzerland.com/en/experiences/route/gastlosen-tour-1/" data-i18n="links.tour">the Gastlosen Tour.</a>
+        <span data-i18n="section.about.text3">The first section of the route (about 600 metres) follows a panoramic path — wide and gently sloping — making it ideal for seniors, families with small children, or anyone looking for a relaxed walk. At the viewpoint, hikers are rewarded with a breathtaking panorama of the Gastlosen mountain range.</span>
+      </p>
+      
+      <h3 data-i18n="section.about.subtitle1">Guesthaus</h3>
+      <p data-i18n="section.about.text4">
+        The Bärghus is an ideal place for people who want to spend quality time together and away from the hustle and bustle of everyday life. It can host up to 10 people overnight in the attic, with an option to pitch your own tent for larger groups. The entirety of the first floor is occupied by full scale kitchen and a dinning area for up to 50 people, suitable for cosy private groups as well as workshops and events.
+        </p>
+        <p>
+          <span data-i18n="text.see">See </span>
+          <a href="#facilities"><strong data-i18n="section.about.tex5">facilities</strong></a>
+          <span data-i18n="section.about.text6"> and </span>
+          <a href="#gallery"><strong data-i18n="section.about.text7">gallery</strong></a>
+          <span data-i18n="section.about.text8">to learn more about our offer.</span>
+        <p>
+        <span strong data-i18n="section.about.text9">Bärghus Musersbergli is only available for rent when it is not being operated as an inn. 
+        </strong><span data-i18n="text.see">See </span>
+        <a href="#booking"><data-i18n="text.here">here</strong></a>
+        <span data-i18n="section.about.text10"> to inquire about the availability.</span></strong>
+        <span data-i18n="section.about.text11">Booking for larger groups and events only possible via email, not AirBnB!</span>
+        
+      <h3 data-i18n="section.about.subtitle2">The Inn</h3>
+      <p><strong style="color: red;" data-i18n="text.open">RESTAURANT OPEN:</strong><span data-i18n="text.openDate"> July 26th - August 11th!</span></p>
+      <p data-i18n="section.about.text12">In certain times the Bärghus also operates as an inn. We offer simple but delicious and filling menu, together with cold and hot drinks to refresh you after a hike or warm up during a skiing break!</p>
     </section>
+    
+    
 
-<section id="gallery" class="card" aria-labelledby="gallery">
-  <h2>Gallery</h2>
+  <section id="gallery" class="card" aria-labelledby="gallery">
+    <h2 data-i18n="section.gallery.title">Gallery</h2>
 
   <!-- Category Tabs -->
   <div class="gallery-tabs">
-    <button class="tab-btn active" data-category="chalet">Chalet</button>
-    <button class="tab-btn" data-category="nature">Nature</button>
+    <button class="tab-btn active" data-category="chalet" data-i18n="section.gallery.chalet">Chalet</button>
+    <button class="tab-btn" data-category="activities" data-i18n="section.gallery.activities">Activities</button>
+    <button class="tab-btn" data-category="events" data-i18n="section.gallery.events">Events</button>
   </div>
 
   <!-- Chalet Sub-Tabs -->
   <div class="gallery-subtabs" id="chalet-subtabs">
-    <button class="subtab-btn" data-subcategory="chalet-all">All</button>
-    <button class="subtab-btn" data-subcategory="chalet-rooms">Rooms</button>
-    <button class="subtab-btn" data-subcategory="chalet-dining">Dining</button>
-    <button class="subtab-btn" data-subcategory="chalet-kitchen">Kitchen</button>
-    <button class="subtab-btn" data-subcategory="chalet-bathrooms">Bathrooms</button>
-    <button class="subtab-btn" data-subcategory="chalet-garden">Garden</button>
+    <button class="subtab-btn" data-subcategory="chalet-all" data-i18n="section.gallery.chAll">All</button>
+    <button class="subtab-btn" data-subcategory="chalet-rooms" data-i18n="section.gallery.rooms">Rooms</button>
+    <button class="subtab-btn" data-subcategory="chalet-dining" data-i18n="section.gallery.dining">Dining</button>
+    <button class="subtab-btn" data-subcategory="chalet-kitchen" data-i18n="section.gallery.kitchen">Kitchen</button>
+    <button class="subtab-btn" data-subcategory="chalet-bathrooms" data-i18n="section.gallery.bathrooms">Bathrooms</button>
+    <button class="subtab-btn" data-subcategory="chalet-outside" data-i18n="section.gallery.outside">Outside</button>
+  </div>
+  
+  <!-- Activities Sub-Tabs -->
+  <div class="gallery-subtabs" id="activities-subtabs">
+    <button class="subtab-btn" data-subcategory="activities-all" data-i18n="section.gallery.actAll">All</button>
+    <button class="subtab-btn" data-subcategory="activities-hiking" data-i18n="section.gallery.hiking">Hiking</button>
+    <button class="subtab-btn" data-subcategory="activities-climbing" data-i18n="section.gallery.climbing">Climbing</button>
+    <button class="subtab-btn" data-subcategory="activities-paragliding" data-i18n="section.gallery.paragliding">Paragliding</button>
+    <button class="subtab-btn" data-subcategory="activities-skiing" data-i18n="section.gallery.skiing">Skiing</button>
+    <!-- <button class="subtab-btn" data-subcategory="activities-snowshoeing">Snowshoeing</button>-->
+  </div>
+  
+   <!-- Events Sub-Tabs -->
+  <div class="gallery-subtabs" id="events-subtabs">
+    <button class="subtab-btn" data-subcategory="events-all" data-i18n="section.gallery.eventsAll">All</button>
+    <button class="subtab-btn" data-subcategory="events-workshops" data-i18n="section.gallery.workshops">Workshops</button>
+    <button class="subtab-btn" data-subcategory="events-celebrations" data-i18n="section.gallery.celebrations">Celebrations</button>
   </div>
 
   <div class="gallery-modal" id="gallery-modal" role="dialog" aria-modal="true">
@@ -66,46 +130,162 @@
 </section>
 
     <section id="facilities" class="card">
-      <h2>Facilities</h2>
-      <p>Seasonal wellness workshops and local crafts sessions led by professionals.</p>
-    </section>
+      <h2 data-i18n="section.facilities.title">Facilities</h2>
+        <p data-i18n="section.facilities.text1">Below is the overview of our guesthaus facilities. If you have any special questions, please contact us by email.</p>
+        <h3 data-i18n="section.facilities.subtitle1">Ground floor</h3>
+        
+          <ul>
+            <li data-i18n="section.facilities.list.dining">
+               Dining and recreation room with several large wooden tables (50 people).
+            </li>
+            <li data-i18n="section.facilities.list.kitchen">
+              Fully equiped kitchen with central gas stove. 
+            </li>
+            <li data-i18n="section.facilities.list.games">
+              Screen+DVD player (DVDs in the attic), gaming table+games.
+            </li>
+          </ul>
+          <span data-i18n="text.hotWater">
+          Hot water is available, only if the wood stove is pre-heated!
+          </span>
+      
+      <h3 data-i18n="section.facilities.subtitle2">Basement</h3>
+          <ul>
+            <li data-i18n="section.facilities.list.toilet">
+              2 ladies and 2 men's toilets (+ 2 pissoirs).
+            </li>
+            <li data-i18n="section.facilities.list.shower">
+              Shower in the women's toilets.
+            </li>
+          </ul>
+          <span data-i18n="text.hotWater">
+            Hot water is available, only if the wood stove is pre-heated!
+          </span>
+      
+      <h3 data-i18n="section.facilities.subtitle3">Attic (3 rooms)</h3>
 
-    <section id="pricing" class="card">
-      <h2>Pricing</h2>
-      <p>Price list below is intended for small group stays. Contact us directly for the rates for events and other special requests. </p>
+        <ul>
+            <li data-i18n="section.facilities.list.lounge">Lounge with sleeping space on provided mattresses / camp beds (5 people). Also a couch, an armchair and a small table. Storage space and a cupboard.</li>
+            <li data-i18n="section.facilities.list.room1">Room with double bed and space to hang clothes.</li>
+            <li data-i18n="section.facilities.list.room2">Room with sleeping space on provided mattresses / camp beds (3 people). A small table and a shelf.</li>
+            <li data-i18n="section.facilities.list.atticLight">In the attic only mobile LED lamps - no permanently installed ceiling lights - and few outlets available.</li>
+        </ul>
+        <span data-i18n="section.facilities.text2">
+          Linen for the double bed available. Please bring your own sleeping bags and bedding for the mattresses / camp beds.
+        </span>
+      
+      <h3 data-i18n="section.facilities.subtitle4">Other things to note</h3>
+        <ul>
+          <li data-i18n="section.facilities.list.access">Limited accessibility – stairs to the attic and bathroom.</li>
+          <li data-i18n="section.facilities.list.wifi">No Wi-Fi/ Internet or TV connection available.</li>
+          <li data-i18n="text.hotWater">Hot water is available, only if the wood stove is pre-heated!</li>
+          <li data-i18n="section.facilities.list.heating">Heating only by the oil heater in the ground floor.</li>
+        </ul>
+
+      <h2 id="pricing" data-i18n="section.pricing.title">Pricing</h2>
+      <p data-i18n="section.pricing.text">Price list below is intended for small group (up to 10 people) stays. Contact us directly for the rates for events and other special requests. </p>
       <div class="table-wrapper">
       <table>
         <thead>
-          <tr><th>Rate</th><th>Price/Night</th></tr>
+          <tr>
+            <th data-i18n="section.pricing.table.rate">Rate</th>
+            <th data-i18n="section.pricing.table.price">Price/Night</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>Base rate (1-2 guests)</td><td>750 CHF</td></tr>
-          <tr><td>Per person surcharge (from 3rd guest)</td><td>30 CHF</td></tr>
-          <tr><td>Pet surcharge (total*)</td><td>34 CHF</td></tr>
+          <tr>
+            <td data-i18n="section.pricing.table.base">Base rate (1-2 guests)</td>
+            <td>750 CHF</td>
+          </tr>
+          <tr>
+            <td data-i18n="section.pricing.table.extra">Per person surcharge (from 3rd guest)</td>
+            <td>30 CHF</td>
+          </tr>
+          <tr>
+            <td data-i18n="section.pricing.table.pets">Pet surcharge (total*)</td>
+            <td>34 CHF</td>
+          </tr>
         </tbody>
       </table>
       </div>
-      <p>Min. number of nights: 3.</p>
-      <p>Max. number of guests sleeping inside the chalet: 10.</p>
-      <p>Children under 2 stay for free.</p>
-      <p>* Let us know if you are bringing more than 2 pets.</p>
+      <p data-i18n="section.pricing.table.more1">Min. number of nights: 3.</p>
+      <p data-i18n="section.pricing.table.more2">Max. number of guests sleeping inside the chalet: 10.</p>
+      <p data-i18n="section.pricing.table.more3">Children under 2 stay for free.</p>
+      <p data-i18n="section.pricing.table.more4">* Let us know if you are bringing more than 2 pets.</p>
     </section>
-
-    <section id="booking" class="card">
-      <h2>Book Your Stay</h2>
-      <div class="booking-container">
-        <div class="booking-options">
-          <div class="option-box">
-            <h3>Email Us</h3>
-            <p>Reach out directly to make a reservation or ask questions:</p>
-            <span id="email-link-container"></span>
-          </div>
-          <div class="option-box">
-            <h3>Book on Airbnb</h3>
-            <p>View real-time availability and secure your stay:</p>
-            <a href="https://www.airbnb.com/rooms/1281042066773625987?check_in=2025-06-15&check_out=2025-06-21&guests=1&adults=1&s=67&unique_share_id=c1413cb7-61c7-4af3-8c93-ead8817e9a4e" class="btn-primary" target="_blank">Go to Airbnb</a>
+    
+    <section id="weather" class="card">
+      <h2 data-i18n="section.weather.title">Current Weather</h2>
+            <!-- Responsive container for Windy webcam + Meteoblue widget -->
+      <div class="jaun-embeds">
+        <!-- Webcam -->
+        <div class="embed-item webcam">
+          <div class="windy-webcam-wrapper">
+            <a
+              name="windy-webcam-timelapse-player"
+              data-id="1669819699"
+              data-play="day"
+              data-loop="0"
+              data-auto-play="0"
+              data-force-full-screen-on-overlay-play="0"
+              data-interactive="1"
+              href="https://windy.com/webcams/1669819699"
+              target="_blank"
+            >Jaun</a>
           </div>
         </div>
+      
+        <!-- Meteoblue Weather Widget -->
+        <div class="embed-item weather">
+          <iframe
+            class="meteoblue-widget"
+            src="https://www.meteoblue.com/en/weather/widget/three/jaun_switzerland_2660231?geoloc=fixed&nocurrent=0&noforecast=0&days=4&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image"
+            frameborder="0"
+            scrolling="NO"
+            allowtransparency="true"
+            sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
+            loading="lazy"
+          ></iframe>
+          <div class="meteoblue-attrib">
+            <!-- DO NOT REMOVE THIS LINK -->
+            <a href="https://www.meteoblue.com/en/weather/week/jaun_switzerland_2660231" target="_blank" rel="noopener">meteoblue</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Load Windy webcam player script ONCE per page -->
+      <script async src="https://webcams.windy.com/webcams/public/embed/v2/script/player.js"></script>
+    </section> 
+    
+    <section id="directions" class="card">
+      <h2 data-i18n="section.directions.title">Getting There</h2>
+      <h3 class="directions-heading" data-i18n="section.directions.subtitle1">Switzerland – Canton of Freiburg – Jauntal – Jaun</h3>
+      <div class="directions-container">
+        <div class="directions-options">
+          <h4 data-i18n="section.directions.subtitle2">By public transport</h4>
+        <p>
+          <span data-i18n="section.directions.text1">Take the PostBus to the stop </span>
+          <strong data-i18n="section.directions.text2">Jaun, Bergbahnen</strong> 
+          <span data-i18n="section.directions.text3">. From there walk about 500 m. to the Jaun Gastlosen-Express chairlift. The chairlift takes you up to the mountain station in 10 minutes. Chairlift tickets: on site or online via</span>
+          <a href="https://www.jaun-bergbahnen.ch" data-i18n="links.chairlift">Gastlosen-Express chairlift</a>
+          <span data-i18n="section.directions.text4">. From the mountain station it is only 100 m to the Bärghus.</span>
+        </p>
+        <h4 data-i18n="section.directions.subtitle3">By car</h4>
+        <p>
+          <strong data-i18n="section.directions.text5">In winter:</strong> 
+          <span data-i18n="section.directions.text6"> Arrive at the Jaun Gastlosen-Express chairlift station and leave the car in its parking lot. THe parking can be paid by the PayByPhone APP. From there follow the same directions as above.</span>
+        </p>
+        <p>
+          <strong data-i18n="section.directions.text7">In summer:</strong>
+          <span data-i18n="section.directions.text8"> with our exception permit, there is also the possibility to drive directly up to Bärghus (6 km of gravel mountain road, 20-30 min).
+          </span>
+        </p>
+        <p>
+          <strong data-i18n="section.directions.text9">Attention:</strong> 
+          <span "section.directions.text10"> Narrow mountain road! And from 10 am to 5 pm there is oncoming traffic by hikers, cyclists and scooters. Always drive carefully and carefully!</span>
+        </p>
+</p>
+</div>
         <aside class="map-container">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d329.68724463545806!2d7.283722125347452!3d46.59571190170516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sch!4v1749584670522!5m2!1sen!2sch"
@@ -113,13 +293,31 @@
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </aside>
+        </div>
+    </section>
+
+    <section id="booking" class="card">
+      <h2 data-i18n="section.booking.title">Book Your Stay</h2>
+      <div class="booking-container">
+        <div class="booking-options">
+          <div class="option-box">
+            <h3 data-i18n="section.booking.email">Email Us</h3>
+            <p>Reach out directly to make a reservation or ask questions:</p>
+            <span id="email-link-container"></span>
+          </div>
+          <div class="option-box">
+            <h3 data-i18n="section.booking.airbnb">Book on Airbnb</h3>
+            <p>View real-time availability and secure your stay:</p>
+            <a href="https://www.airbnb.com/rooms/1281042066773625987?check_in=2025-06-15&check_out=2025-06-21&guests=1&adults=1&s=67&unique_share_id=c1413cb7-61c7-4af3-8c93-ead8817e9a4e" class="btn-primary" target="_blank" data-i18n="section.booking.airbnbLink">Go to Airbnb</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
-  <a href="#booking" class="floating-button" aria-label="Contact us">Contact Us</a>
+  <a href="#booking" class="floating-button" aria-label="Contact us" data-i18n="button.contact">Contact Us</a>
   <footer>
-    <p>&copy; 2025 Mountain Escape Chalet</p>
+    <p>&copy; 2025 Bärghus Gastlosen AG</p>
   </footer>
 
   <script src="js/scripts.js"></script>

@@ -86,7 +86,7 @@ nav.scrolled{box-shadow:0 4px 8px var(--shadow);transform:translateY(-2px)}
 }
 
 /* HERO */
-.hero.full{height:100vh;background:url('../images/gallery/1.jpg')center/cover;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:72px}
+.hero.full{height:100vh;background:url('../images/chalet/outside/outside1.jpeg')center/cover;display:flex;align-items:center;justify-content:center;text-align:center;margin-top:72px}
 .hero-content{background:rgba(0,0,0,0.5);padding:2rem;border-radius:8px;color:#fff}
 .btn-primary{display:inline-block;margin-top:1rem;padding:0.8rem 1.6rem;background:var(--accent);color:#fff;font-weight:bold;border-radius:5px;transition:background 0.3s}
 .btn-primary:hover{background:#88aa73}
@@ -249,19 +249,45 @@ td:first-child {
   gap: 2rem;
 }
 
-.booking-options {
-  flex: 1 1 300px;
+.directions-heading {
+  text-align: center;
+  margin: 2rem auto 1rem;
+  color: var(--primary);
+}
+
+.directions-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center; /* vertical centering */
   gap: 2rem;
 }
 
 .map-container {
   flex: 1 1 300px;
   height: 400px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px var(--shadow);
+  display: flex;
+  align-items: center; /* vertical centering inside the aside */
+  justify-content: center;
+}
+
+/* SPACING*/
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
 }
 
 
@@ -307,6 +333,10 @@ a, button, .gallery-category, .activity-tile {
   margin: 2rem auto;
   max-width: 1200px;
   transition: box-shadow 0.3s ease;
+}
+
+.card > *:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
 .card:hover {
@@ -395,9 +425,78 @@ section.card:not(:last-child) {
   display: flex;
 }
 
+/* --- EMBEDS CARD (weather section) ----------------------------------- */
+:root {
+  /* give *both* columns the same preferred width */
+  --embed-gap: 1rem;
+  --webcam-max-width: 600px;   /* match the Meteoblue widget width */
+  --weather-max-width: 460px;  /* unchanged */
+}
 
+/* row layout by default (desktop / tablets) */
+.jaun-embeds {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;        /* stretch short column to match tall one */
+  gap: var(--embed-gap);
+  max-width: 100%;
+}
 
+.jaun-embeds .embed-item {
+  flex: 1 1 0; /* both grow/shrink equally */
+  max-width: none;
+}
 
+/* stack on small screens */
+@media (max-width: 600px) {
+  .jaun-embeds {
+    flex-direction: column;
+  }
+  .jaun-embeds .embed-item {
+    max-width: 100%;
+  }
+}
 
+/* Windy webcam proportional wrapper */
+.windy-webcam-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 620 / 584;   /* ≈ 0.79 */
+}
 
+/* make the injected player fill the box */
+.windy-webcam-wrapper > a,
+.windy-webcam-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  display: block;
+}
 
+/* Meteoblue widget: allowed to alter width/height via CSS; aspect from original 460x584 ≈ 460/584 */
+.meteoblue-widget {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 620 / 584;
+  max-width: 100%;
+  display: block;
+  border: 0;
+}
+
+/* optional: small text for attribution */
+.meteoblue-attrib {
+  font: 12px/1.2 sans-serif;
+  margin-top: 0.25rem;
+  text-align: right;
+}
+.meteoblue-attrib a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+}
+.meteoblue-attrib a:hover,
+.meteoblue-attrib a:focus {
+  text-decoration: underline;
+}
