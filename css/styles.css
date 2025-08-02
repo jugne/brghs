@@ -42,6 +42,28 @@ nav.scrolled{box-shadow:0 4px 8px var(--shadow);transform:translateY(-2px)}
 .dropdown:hover .dropdown-menu{display:block}
 .dropdown-menu li a{display:block;padding:0.5rem 1rem;color:var(--light)}
 
+
+@media (min-width: 769px) {
+
+  /* 1. Create an invisible “buffer” right under the link               */
+  .dropdown > a::after{
+    content:"";
+    position:absolute;
+    left:-0.75rem;              /* widen hit-area left / right          */
+    right:-0.75rem;
+    top:100%;                   /* start exactly at the bottom of link  */
+    height:16px;                /* small bridge to the submenu          */
+  }
+
+  /* 2. Keep menu visible while pointer is over the link,
+        the bridge **or** the menu itself                               */
+  .dropdown:hover .dropdown-menu,
+  .dropdown > a:hover + .dropdown-menu,
+  .dropdown-menu:hover{
+    display:block;
+  }
+}
+
 /* MOBILE NAV */
 @media(max-width:768px){
   .menu-toggle{display:block}
@@ -55,6 +77,12 @@ nav.scrolled{box-shadow:0 4px 8px var(--shadow);transform:translateY(-2px)}
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.4s ease;
+  }
+  
+  .nav-links.show .dropdown-menu{
+    position:absolute;
+    left:0;
+    top:100%;
   }
 
   .nav-links.show {
@@ -312,6 +340,12 @@ body.dark-mode nav.scrolled {
 body.dark-mode footer {
   background: #1e2f23;
 }
+
+/* leave room for the fixed nav on every hash-link jump */
+html{
+  scroll-padding-top: 72px;  /* = real nav height */
+}
+
 
 /* FONT */
 
