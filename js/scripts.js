@@ -175,7 +175,7 @@ navLinks.querySelectorAll('a').forEach(link => {
   ],
   'activities-paragliding': [
     { src: 'images/activities/paragliding/para1.jpeg', caption: 'Bärghus is a popular spot for paragliders!' },
-    { src: 'images/activities/paragliding/para1.jpeg', caption: 'Paragliding directly from the Bärghus.' }
+    { src: 'images/activities/paragliding/para2.jpeg', caption: 'Paragliding directly from the Bärghus.' }
   ],
   'activities-skiing': [
     { src: 'images/activities/skiing/ski1.jpeg', caption: 'Ski in and out!' },
@@ -317,13 +317,13 @@ const translations = {
             kitchen: "Fully equiped kitchen with central gas stove. ",
             games: "Screen+DVD player (DVDs in the attic), gaming table+games.",
             toilet: "2 ladies and 2 men's toilets (+ 2 pissoirs).",
-            shower: "Shower in the women's toilets.",
+            shower: "One shower.",
             lounge: "Lounge with sleeping space on provided mattresses / camp beds (5 people). Also a couch, an armchair and a small table. Storage space and a cupboard.",
             room1: "Room with double bed and space to hang clothes.",
             room2: "Room with sleeping space on provided mattresses / camp beds (3 people). A small table and a shelf.",
             atticLight: "In the attic only mobile LED lamps - no permanently installed ceiling lights - and few outlets available.",
             access: "Limited accessibility – stairs to the attic and bathroom.",
-            wifi: "No Wi-Fi/ Internet or TV connection available.",
+            wifi: "No Wi-Fi/internet or TV connection available.",
             heating: "Heating only by the oil heater in the ground floor."
           }
         },
@@ -355,11 +355,11 @@ const translations = {
           text3: ". From there walk about 500 m. to the Jaun Gastlosen-Express chairlift. The chairlift takes you up to the mountain station in 10 minutes. Chairlift tickets: on site or online via ",
           text4: ". From the mountain station it is only 100 m to the Bärghus.",
           text5: "In winter:",
-          text6: " Arrive at the Jaun Gastlosen-Express chairlift station and leave the car in its parking lot. THe parking can be paid by the PayByPhone APP. From there follow the same directions as above.",
+          text6: " arrive at the Jaun Gastlosen-Express chairlift station and leave the car in its parking lot. THe parking can be paid by the PayByPhone APP. From there follow the same directions as above.",
           text7: "In summer:",
           text8: " with our exception permit, there is also the possibility to drive directly up to Bärghus (6 km of gravel mountain road, 20-30 min).",
           text9: "Attention:",
-          text10: " Narrow mountain road! And from 10 am to 5 pm there is oncoming traffic by hikers, cyclists and scooters. Always drive carefully and carefully!"
+          text10: " Narrow mountain road! And from 10 am to 5 pm there is oncoming traffic by hikers, cyclists and scooters. Always drive slowly and carefully!"
           
           
         },
